@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:tamagotchi="clr-namespace:Tamagotchi"
+             x:Class="Tamagotchi.MainPage">
+    
+        <StackLayout BackgroundColor="White">
+
+
+        <tamagotchi:CreatureView x:Name="MyCreatureView"  />
+
+
+
+        <Frame BackgroundColor="LightSteelBlue" Padding="36" CornerRadius="0"   VerticalOptions="EndAndExpand">
+            
+            <Grid RowDefinitions="Auto, Auto, Auto, Auto"
+                  ColumnDefinitions="*">
+
+                <Label Text="Hunger" FontSize="16" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+
+                
+
+                <ProgressBar Progress ="{Binding MyCreature.Hunger, Mode=OneWay}"  Grid.Row="1" Grid.Column="0" ProgressColor="Blue" />
+
+
+                <Button Text = "Hunger"  
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Clicked="Button_Clicked_Hunger"
+               />
+                
+                <Label Text="Thirst" FontSize="16" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+                <ProgressBar Progress ="{Binding MyCreature.Thirst, Mode=OneWay}" Grid.Row="1" Grid.Column="1" ProgressColor="Blue" />
+
+                <Button Text = "Thirst"  
+                Grid.Row="0" Grid.Column="1"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Clicked="Button_Clicked_Thirst"
+               />
+
+                <Label Text="Boredom" FontSize="16" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+                <ProgressBar Progress ="{Binding MyCreature.Boredom, Mode=OneWay}" Grid.Row="1" Grid.Column="2" ProgressColor="Blue" />
+
+                <Button Text = "Boredom"  
+                Grid.Row="0" Grid.Column="2"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Clicked="Button_Clicked_Boredom"
+               />
+                
+                <Label Text="Loneliness" FontSize="16" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+                <ProgressBar Progress ="{Binding MyCreature.Loneliness, Mode=OneWay}" Grid.Row="3" Grid.Column="0" ProgressColor="Blue" />
+
+                <Button Text = "Loneliness"  
+                Grid.Row="2" Grid.Column="0"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Clicked="Button_Clicked_Loneliness"
+               />
+
+                <Label Text="Stimulation" FontSize="16" Grid.Row="2" Grid.Column="1" HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+                <ProgressBar Progress ="{Binding MyCreature.Stimulated, Mode=OneWay}" Grid.Row="3" Grid.Column="1" ProgressColor="Blue" />
+
+                <Button Text = "Stimulation"  FontSize="13"
+                Grid.Row="2" Grid.Column="1" 
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Clicked="Button_Clicked_Stimulation"
+               />
+
+                <Label Text="Tired" FontSize="16" Grid.Row="2" Grid.Column="2" HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+                <ProgressBar Progress ="{Binding MyCreature.Tired, Mode=OneWay}" Grid.Row="3" Grid.Column="2" ProgressColor="Blue" />
+
+                <Button Text = "Tired"  
+               Grid.Row="2" Grid.Column="2"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Clicked="Button_Clicked_Tired"
+               />
+
+
+            </Grid>
+
+            
+        </Frame>
+        
+    </StackLayout>
+
+</ContentPage>
