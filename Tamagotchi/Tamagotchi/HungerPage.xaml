@@ -4,22 +4,26 @@
              x:Class="Tamagotchi.HungerPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to HungerPage!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
 
+
+            <Image x:Name="UilImage" />
+            
             <tamagotchi:CreatureView x:Name="MyCreatureView"  />
-           
 
-            <ProgressBar Progress ="{Binding MyCreature.Hunger, Mode=OneWay}" />
-
+            <Button Text = "Feed Me!"  
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Clicked="Food_Button"
+               />
 
             <Button Text = "Back"  
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
                 Clicked="Back_Button_Clicked"
                />
+
             
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

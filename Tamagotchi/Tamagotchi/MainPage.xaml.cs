@@ -33,12 +33,18 @@ namespace Tamagotchi
 
             var timer = new Timer
             {
-                Interval = 1000 * 20,
+                Interval = 1000 * 60,
                 AutoReset = true
             };
 
             timer.Elapsed += Timer_Elapsed;
             timer.Start();
+
+            TextFromCode = "Click me!";
+
+            InitializeComponent();
+
+            //MyCreatureView.MyCreature = MyCreature;
 
             var creatureDataStore = DependencyService.Get<IDataStore<Creature>>();
 
@@ -49,65 +55,59 @@ namespace Tamagotchi
                 MyCreature = new Creature { Name = "Boris" };
                 creatureDataStore.CreateItem(MyCreature);
             }
-
-
-            TextFromCode = "Click me!";
-
-            InitializeComponent();
-
-            MyCreatureView.MyCreature = MyCreature;
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            MyCreature.Hunger -= 0.1f;
-            MyCreature.Thirst -= 0.1f;
-            MyCreature.Boredom += 0.1f;
-            MyCreature.Loneliness += 0.1f;
-            MyCreature.Stimulated += 0.1f;
-            MyCreature.Tired += 0.1f;
-            var creatureDataStore = DependencyService.Get<IDataStore<Creature>>();
-            creatureDataStore.UpdateItem(MyCreature);
+            if(MyCreature.Hunger < 1f || MyCreature.Thirst < 1f || MyCreature.Boredom < 1f || MyCreature.Loneliness < 1f || MyCreature.Stimulated < 1f || MyCreature.Tired < 1f)
+            {
+                MyCreature.Hunger += 0.1f;
+                MyCreature.Thirst += 0.1f;
+                MyCreature.Boredom += 0.1f;
+                MyCreature.Loneliness += 0.1f;
+                MyCreature.Stimulated += 0.1f;
+                MyCreature.Tired += 0.1f;
+                var creatureDataStore = DependencyService.Get<IDataStore<Creature>>();
+                creatureDataStore.UpdateItem(MyCreature);
+            }
+            
+            
+            
         }
 
-        private void Button_Clicked_Hunger(object sender, EventArgs e)
+        public void Button_Clicked_Hunger(object sender, EventArgs e)
         {
-            MyCreature.Hunger += 0.1f;
-            
+            var creatureDataStore = DependencyService.Get<IDataStore<Creature>>();
+            creatureDataStore.UpdateItem(MyCreature);
             Navigation.PushAsync(new HungerPage());
         }
 
         private void Button_Clicked_Thirst(object sender, EventArgs e)
         {
-            MyCreature.Thirst += 0.1f;
             var creatureDataStore = DependencyService.Get<IDataStore<Creature>>();
             creatureDataStore.UpdateItem(MyCreature);
-            // Navigation.PushAsync(new ThirstPage());
+            Navigation.PushAsync(new ThirstPage());
         }
         private void Button_Clicked_Boredom(object sender, EventArgs e)
         {
-            MyCreature.Boredom += 0.1f;
             var creatureDataStore = DependencyService.Get<IDataStore<Creature>>();
             creatureDataStore.UpdateItem(MyCreature);
             Navigation.PushAsync(new BoredomPage());
         }
         private void Button_Clicked_Loneliness(object sender, EventArgs e)
         {
-            MyCreature.Loneliness -= 0.1f;
             var creatureDataStore = DependencyService.Get<IDataStore<Creature>>();
             creatureDataStore.UpdateItem(MyCreature);
             Navigation.PushAsync(new LonelinessPage());
         }
         private void Button_Clicked_Stimulation(object sender, EventArgs e)
         {
-            MyCreature.Stimulated += 0.1f;
             var creatureDataStore = DependencyService.Get<IDataStore<Creature>>();
             creatureDataStore.UpdateItem(MyCreature);
             Navigation.PushAsync(new StimulationPage());
         }
         private void Button_Clicked_Tired(object sender, EventArgs e)
         {
-            MyCreature.Tired += 0.1f;
             var creatureDataStore = DependencyService.Get<IDataStore<Creature>>();
             creatureDataStore.UpdateItem(MyCreature);
             Navigation.PushAsync(new TiredPage());

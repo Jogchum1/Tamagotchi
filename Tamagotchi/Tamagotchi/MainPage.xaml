@@ -6,7 +6,8 @@
         <StackLayout BackgroundColor="White">
 
 
-        <tamagotchi:CreatureView x:Name="MyCreatureView"  />
+        <Image Source="UilBlij.png" />
+
 
 
 
@@ -19,9 +20,9 @@
                VerticalOptions="Center" />
 
 
-                
 
-                <ProgressBar Progress ="{Binding MyCreature.Hunger, Mode=OneWay}"  Grid.Row="1" Grid.Column="0" ProgressColor="Blue" />
+
+                <ProgressBar x:Name="HungerProgress" Progress ="{Binding MyCreature.Hunger, Mode=OneWay}"  Grid.Row="1" Grid.Column="0" ProgressColor="Blue"/>
 
 
                 <Button Text = "Hunger"  

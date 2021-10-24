@@ -11,27 +11,29 @@ using Xamarin.Forms.Xaml;
 namespace Tamagotchi
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CreatureView : ContentView
+    public partial class CreatureView : ContentView, INotifyPropertyChanged
     {
-        public static readonly BindableProperty MyCreatureProperty = BindableProperty.Create(nameof(MyCreature), typeof(Creature), typeof(CreatureView), propertyChanged: HandlePropertyChanged);
-
-        public Creature MyCreature
+        public string HappyUil
         {
-            get => GetValue(MyCreatureProperty) as Creature;
-            set => SetValue(MyCreatureProperty, value);
+            get { return "UilBlij.png"; }
         }
 
+        public string SadUil
+        {
+            get { return "UilSad.png"; }
+        }
+        public Creature MyCreature { get; set; }
         public CreatureView()
         {
+            MyCreature = DependencyService.Get<IDataStore<Creature>>().ReadItem();
+            if(MyCreature == null)
+            {
+                MyCreature = new Creature { Name = "Boris" };
+                DependencyService.Get<IDataStore<Creature>>().CreateItem(MyCreature);
+            }
             BindingContext = this;
-
-			InitializeComponent();
-		}
-
-		private static void HandlePropertyChanged(BindableObject b, object oldValue, object newValue)
-		{
-			//(b as view).Property;
-		}
+            InitializeComponent();
+        }
 	}
 
 }

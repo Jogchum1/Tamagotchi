@@ -1,12 +1,66 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:tamagotchi="clr-namespace:Tamagotchi" x:DataType="tamagotchi:CreatureView"
              x:Class="Tamagotchi.CreatureView">
   <ContentView.Content>
       
       
       <StackLayout>
-            <Image Source="UilBlij.png" />
+            <Image Source="{Binding HappyUil}" />
+
+            <Grid RowDefinitions="Auto, Auto, Auto, Auto"
+                  ColumnDefinitions="*">
+
+                <Label Text="Hunger" FontSize="16" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+
+
+
+                <ProgressBar x:Name="HungerProgress" Progress ="{Binding MyCreature.Hunger, Mode=OneWay}"  Grid.Row="1" Grid.Column="0" ProgressColor="Blue"/>
+
+
+                
+
+                <Label Text="Thirst" FontSize="16" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+                <ProgressBar Progress ="{Binding MyCreature.Thirst, Mode=OneWay}" Grid.Row="1" Grid.Column="1" ProgressColor="Blue" />
+
+                
+
+                <Label Text="Boredom" FontSize="16" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+                <ProgressBar Progress ="{Binding MyCreature.Boredom, Mode=OneWay}" Grid.Row="1" Grid.Column="2" ProgressColor="Blue" />
+
+                
+
+                <Label Text="Loneliness" FontSize="16" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+                <ProgressBar Progress ="{Binding MyCreature.Loneliness, Mode=OneWay}" Grid.Row="3" Grid.Column="0" ProgressColor="Blue" />
+
+               
+
+                <Label Text="Stimulation" FontSize="16" Grid.Row="2" Grid.Column="1" HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+                <ProgressBar Progress ="{Binding MyCreature.Stimulated, Mode=OneWay}" Grid.Row="3" Grid.Column="1" ProgressColor="Blue" />
+
+                
+
+                <Label Text="Tired" FontSize="16" Grid.Row="2" Grid.Column="2" HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+                <ProgressBar Progress ="{Binding MyCreature.Tired, Mode=OneWay}" Grid.Row="3" Grid.Column="2" ProgressColor="Blue" />
+
+                
+
+
+            </Grid>
+
+           
 
         </StackLayout>
   </ContentView.Content>
